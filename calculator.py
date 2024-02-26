@@ -1,17 +1,17 @@
 import tkinter as tk
 
-# Створення вікна
+# Creating a window
 root = tk.Tk()
 root.title("Калькулятор")
 
-# Змінна для зберігання числа в пам'яті
+# A variable for storing a number in memory
 memory = 0
 
-# Створення віджету для відображення введення/виведення
+# Creating a widget to display input/output
 entry = tk.Entry(root, width=30, borderwidth=5, font=('Arial', 16))
-entry.grid(row=0, column=0, columnspan=5, padx=10, pady=10)  # розміщуємо віджет на вікні
+entry.grid(row=0, column=0, columnspan=5, padx=10, pady=10)  #place the widget on the window
 
-# Функція для обробки натискання на кнопки
+# A function for handling button presses
 def button_click(number):
     current = entry.get()
     entry.delete(0, tk.END)
@@ -81,7 +81,7 @@ def button_power():
         entry.delete(0, tk.END)
         entry.insert(0, "Error")
 
-# Створення кнопок
+# Creating buttons
 buttons = [
     ('7', 1, 0), ('8', 1, 1), ('9', 1, 2), ('+', 1, 3),
     ('4', 2, 0), ('5', 2, 1), ('6', 2, 2), ('-', 2, 3),
@@ -92,7 +92,7 @@ buttons = [
     ('M+', 6, 0), ('MR', 6, 1), ('MC', 6, 2), ('+/-', 6, 3)
 ]
 
-# Перебір кнопок і створення їх на вікні зі стилізацією
+# Sorting buttons and creating them on a window with stylization
 for button in buttons:
     btn_text, row, col = button
     btn = tk.Button(root, text=btn_text, padx=20, pady=20, font=('Arial', 14))
@@ -118,7 +118,7 @@ for button in buttons:
     else:
         btn.config(command=lambda number=btn_text: button_click(number), bg="lightgrey")
 
-# Задаємо однакову вагу для всіх рядків і стовпців, щоб кнопки рівномірно розподілялися по вікну
+# We set the same weight for all rows and columns so that the buttons are evenly distributed across the window
 for i in range(7):
     root.grid_rowconfigure(i, weight=1)
 for i in range(5):
